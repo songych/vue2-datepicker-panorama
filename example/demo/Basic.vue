@@ -14,6 +14,10 @@
       <date-picker v-model="value2" type="month" placeholder="Select month"></date-picker>
     </section>
     <section>
+      <p>quarter</p>
+      <date-picker v-model="value7" type="quarter" placeholder="Select quarter"></date-picker>
+    </section>
+    <section>
       <p>year</p>
       <date-picker v-model="value3" type="year" placeholder="Select year"></date-picker>
     </section>
@@ -43,6 +47,7 @@ export default {
       value4: null,
       value5: null,
       value6: null,
+      value7: null,
     };
   },
 };

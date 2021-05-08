@@ -212,6 +212,9 @@
       background-color: $disabled-background-color;
     }
   }
+  &.calender-content-quarter{
+    height: 34px;
+  }
 }
 
 .#{$namespace}-calendar-week-mode {

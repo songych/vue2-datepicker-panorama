@@ -185,6 +185,7 @@ export default {
       if (Array.isArray(this.innerValue)) {
         return this.innerValue.map(v => this.formatDate(v)).join(this.innerRangeSeparator);
       }
+      console.log('22222222.this.innervalue=', this.innerValue);
       return this.formatDate(this.innerValue);
     },
     showClearIcon() {
@@ -248,7 +249,17 @@ export default {
       if (typeof this.getFormatter('stringify') === 'function') {
         return this.getFormatter('stringify')(date, fmt);
       }
-      return format(date, fmt, { locale: this.locale.formatLocale });
+      if(this.type==='quarter') {
+        const map = {
+          0: 1,
+          3: 2,
+          6: 3,
+          9: 4
+        }
+        return date.getFullYear()+'-'+'Q'+map[date.getMonth()];
+      }else{
+        return format(date, fmt, { locale: this.locale.formatLocale });
+      }
     },
     // transform the outer value to inner date
     value2date(value) {

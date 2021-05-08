@@ -10,6 +10,7 @@ import {
 import TableDate from './table-date';
 import TableMonth from './table-month';
 import TableYear from './table-year';
+import TableQuarter from './table-quarter';
 
 export default {
   name: 'CalendarPanel',
@@ -64,11 +65,12 @@ export default {
     },
   },
   data() {
-    const panels = ['date', 'month', 'year'];
+    const panels = ['date', 'month', 'year', 'quarter'];
     const index = Math.max(panels.indexOf(this.type), panels.indexOf(this.defaultPanel));
     const panel = index !== -1 ? panels[index] : 'date';
     return {
       panel,
+      oldPanel: '',
       innerCalendar: new Date(),
     };
   },
@@ -129,6 +131,7 @@ export default {
     },
     handelPanelChange(panel) {
       const oldPanel = this.panel;
+      this.oldPanel = oldPanel;
       this.panel = panel;
       this.dispatchDatePicker('panel-change', panel, oldPanel);
     },
@@ -138,7 +141,8 @@ export default {
         this.emitDate(date, 'year');
       } else {
         this.handleCalendarChange(createDate(year, this.calendarMonth), 'year');
-        this.handelPanelChange('month');
+        // this.handelPanelChange('month');
+        this.handelPanelChange(this.oldPanel);
         if (this.partialUpdate && this.innerValue.length === 1) {
           const date = new Date(this.innerValue[0]);
           date.setFullYear(year);
@@ -160,11 +164,24 @@ export default {
         }
       }
     },
+    handleSelectQuarter(quarter) {
+      const date = this.getQuarterCellDate(quarter);
+      this.emitDate(date, 'quarter');
+    },
     handleSelectDate(date) {
       this.emitDate(date, this.type === 'week' ? 'week' : 'date');
     },
     getMonthCellDate(month) {
       return createDate(this.calendarYear, month);
+    },
+    getQuarterCellDate(quarter) {
+      const map = {
+        1: 0,
+        2: 3,
+        3: 6,
+        4: 9
+      }
+      return createDate(this.calendarYear, map[quarter]);
     },
     getYearCellDate(year) {
       return createDate(year, 0);
@@ -243,6 +260,15 @@ export default {
           onSelect={this.handleSelectMonth}
           onChangepanel={this.handelPanelChange}
           onChangecalendar={this.handleCalendarChange}
+        />
+      );
+    }
+    if (panel === 'quarter') {
+      return (
+        <TableQuarter
+          calendar={innerCalendar}
+          onSelect={this.handleSelectQuarter}
+          onChangepanel={this.handelPanelChange}
         />
       );
     }
