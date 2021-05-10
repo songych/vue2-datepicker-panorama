@@ -39,8 +39,8 @@
 <script>
 import { format } from 'date-format-parse';
 import { getValidDate } from '../util/date';
-import ListColumns from './list-columns';
-import ListOptions from './list-options';
+import ListColumns from './list-columns.vue';
+import ListOptions from './list-options.vue';
 import { getLocale } from '../locale';
 
 export default {

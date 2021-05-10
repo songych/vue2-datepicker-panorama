@@ -13,7 +13,7 @@
 
 <script>
 import { format } from 'date-format-parse';
-import ScrollbarVertical from '../scrollbar/scrollbar-vertical';
+import ScrollbarVertical from '../scrollbar/scrollbar-vertical.vue';
 import { getScrollParent } from '../util/dom';
 import { getLocale } from '../locale';
 

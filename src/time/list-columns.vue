@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import ScrollbarVertical from '../scrollbar/scrollbar-vertical';
+import ScrollbarVertical from '../scrollbar/scrollbar-vertical.vue';
 import { getScrollParent } from '../util/dom';
 
 const padNumber = value => {

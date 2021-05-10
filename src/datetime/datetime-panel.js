@@ -1,5 +1,5 @@
 import CalendarPanel from '../calendar/calendar-panel';
-import TimePanel from '../time/time-panel';
+import TimePanel from '../time/time-panel.vue';
 import { assignTime, getValidDate } from '../util/date';
 import { pick } from '../util/base';
 

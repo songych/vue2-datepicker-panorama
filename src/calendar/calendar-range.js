@@ -105,7 +105,6 @@ export default {
       const diff = yearDiff * 12 + monthDiff;
       const min = this.calendarMinDiff;
       const max = this.calendarMaxDiff;
-      console.log(diff, min, max, 'oooooooo');
       if (diff < min) {
         return min - diff;
       }
@@ -152,7 +151,6 @@ export default {
         // don't update when range is true
         partialUpdate: false,
       };
-      console.log(props);
       const on = {
         select: this.handleSelect,
         'update:calendar': index === 0 ? this.updateStartCalendar : this.updateEndCalendar,

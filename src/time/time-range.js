@@ -1,4 +1,4 @@
-import TimePanel from './time-panel';
+import TimePanel from './time-panel.vue';
 import { isValidRangeDate } from '../util/date';
 
 export default {

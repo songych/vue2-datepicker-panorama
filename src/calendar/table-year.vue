@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import IconButton from './icon-button';
+import IconButton from './icon-button.vue';
 import { chunk } from '../util/base';
 import { createDate } from '../util/date';
 

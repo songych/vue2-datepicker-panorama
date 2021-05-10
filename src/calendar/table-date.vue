@@ -61,7 +61,7 @@
 
 <script>
 import { getWeek, format } from 'date-format-parse';
-import IconButton from './icon-button';
+import IconButton from './icon-button.vue';
 import { chunk } from '../util/base';
 import { createDate, getCalendar } from '../util/date';
 import { getLocale } from '../locale';
