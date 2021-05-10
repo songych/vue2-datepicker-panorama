@@ -21,6 +21,7 @@
             :key="j"
             :data-quarter="cell"
             class="cell"
+            :class="getCellClasses(cell)"
           >
             <div>{{ 'Q'+cell }}</div>
           </td>
