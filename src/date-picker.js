@@ -185,7 +185,6 @@ export default {
       if (Array.isArray(this.innerValue)) {
         return this.innerValue.map(v => this.formatDate(v)).join(this.innerRangeSeparator);
       }
-      console.log('22222222.this.innervalue=', this.innerValue);
       return this.formatDate(this.innerValue);
     },
     showClearIcon() {

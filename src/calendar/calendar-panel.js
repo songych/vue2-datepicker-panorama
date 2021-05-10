@@ -217,14 +217,12 @@ export default {
       const classes = [];
       const cellDate = this.getYearCellDate(year);
       classes.push(this.getStateClass(cellDate));
-      console.log(cellDate, classes);
       return classes.concat(this.getClasses(cellDate, this.innerValue, classes.join(' ')));
     },
     getQuarterClasses(quarter) {
       const classes = [];
       const cellDate = this.getQuarterCellDate(quarter);
       classes.push(this.getStateClass(cellDate));
-      console.log(cellDate, classes);
       return classes.concat(this.getClasses(cellDate, this.innerValue, classes.join(' ')));
     },
     getStateClass(cellDate) {
@@ -278,6 +276,7 @@ export default {
           getCellClasses={this.getQuarterClasses}
           onSelect={this.handleSelectQuarter}
           onChangepanel={this.handelPanelChange}
+          onChangecalendar={this.handleCalendarChange}
         />
       );
     }

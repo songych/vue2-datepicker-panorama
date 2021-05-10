@@ -31,6 +31,7 @@ export default {
       const map = {
         date: 1, // type:date  min 1 month
         month: 1 * 12, // type:month min 1 year
+        quarter: 1 * 12, // type:month min 1 year
         year: 10 * 12, // type:year  min 10 year
       };
       return map[this.type] || map.date;
@@ -89,6 +90,7 @@ export default {
     },
     updateCalendars(calendars, adjustIndex = 1) {
       const gap = this.getCalendarGap(calendars);
+      // console.log(calendars, gap, 'kkkkkkkkkkkk');
       if (gap) {
         const calendar = new Date(calendars[adjustIndex]);
         calendar.setMonth(calendar.getMonth() + (adjustIndex === 0 ? -gap : gap));
@@ -103,6 +105,7 @@ export default {
       const diff = yearDiff * 12 + monthDiff;
       const min = this.calendarMinDiff;
       const max = this.calendarMaxDiff;
+      console.log(diff, min, max, 'oooooooo');
       if (diff < min) {
         return min - diff;
       }
@@ -149,6 +152,7 @@ export default {
         // don't update when range is true
         partialUpdate: false,
       };
+      console.log(props);
       const on = {
         select: this.handleSelect,
         'update:calendar': index === 0 ? this.updateStartCalendar : this.updateEndCalendar,
