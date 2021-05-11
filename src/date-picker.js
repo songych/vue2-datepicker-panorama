@@ -244,18 +244,26 @@ export default {
       return parse(value, fmt, { locale: this.locale.formatLocale, backupDate });
     },
     formatDate(date, fmt) {
+      console.log('1111111111111date=', date);
       fmt = fmt || this.innerFormat;
       if (typeof this.getFormatter('stringify') === 'function') {
         return this.getFormatter('stringify')(date, fmt);
       }
       if(this.type==='quarter') {
-        const map = {
+/*         const map = {
           0: 1,
           3: 2,
           6: 3,
           9: 4
         }
-        return date.getFullYear()+'-'+'Q'+map[date.getMonth()];
+        return date.getFullYear()+'-'+'Q'+map[date.getMonth()]; */
+        const arr = [3, 6, 9, 12];
+        const quarter = arr.findIndex((val)=>{
+          if(date.getMonth() < val) {
+            return true;
+          }
+        });
+        return date.getFullYear()+'-'+'Q'+(quarter+1); 
       }else{
         return format(date, fmt, { locale: this.locale.formatLocale });
       }

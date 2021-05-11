@@ -31,7 +31,7 @@ export default {
     return {
       value1: [new Date(2019, 9, 8), new Date(2019, 9, 19)],
       value2: [],
-      value3: [],
+      value3: [new Date(), new Date()],
     };
   },
 };

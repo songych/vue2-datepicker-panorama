@@ -229,7 +229,23 @@ export default {
       if (this.isDisabled(cellDate)) {
         return 'disabled';
       }
-      if (this.innerValue.some(v => v.getTime() === cellDate.getTime())) {
+      if(this.type==='quarter') {
+        const map = {
+          0: [0, 2],
+          3: [3, 5],
+          6: [6, 8],
+          9: [9, 11],
+        }
+        const span = map[cellDate.getMonth()];
+        if(
+          this.innerValue.some(v => 
+            v.getMonth()>=span[0] && v.getMonth()<=span[1]
+            && v.getYear()===cellDate.getYear()
+          )
+        ) {
+          return 'active';
+        }
+      }else if(this.innerValue.some(v => v.getTime() === cellDate.getTime())) {
         return 'active';
       }
       return '';
